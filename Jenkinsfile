@@ -1,5 +1,12 @@
 pipeline {
     agent {label 'ansible'}
+
+    options {
+      buildDiscarder logRotator(numToKeepStr: '5')
+      timeout(time: 10, unit: 'MINUTES')
+      disableConcurrentBuilds()
+    }
+
     stages {
         stage('Git Clone') {
             steps {

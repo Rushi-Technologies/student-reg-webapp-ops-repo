@@ -10,6 +10,12 @@ pipeline {
         terraform 'Terraform'
     }
 
+    options {
+      buildDiscarder logRotator(numToKeepStr: '5')
+      timeout(time: 10, unit: 'MINUTES')
+      disableConcurrentBuilds()
+    }
+
     // Make sure u have created secret text for aws access key and scretkey in Jenkins Secrets
     environment {
         AWS_ACCESS_KEY_ID = credentials('aws-access-key-id')
