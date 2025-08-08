@@ -6,6 +6,7 @@ pipeline {
                 git branch: 'main', credentialsId: 'GitHubCred', url: 'https://github.com/Rushi-Technologies/student-reg-webapp-ops-repo.git'
             }
         }
+        // Using Static Inventory file
         stage('Ping Tomcat Server') {
             steps {
                 withCredentials([file(credentialsId: 'AWSEC2PEM', variable: 'aws_pem_file')]) {
